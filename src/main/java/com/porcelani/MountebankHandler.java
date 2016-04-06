@@ -25,11 +25,9 @@ public class MountebankHandler {
 
 
     private static final String MOUNTEBACK_SCHEME = "http";
-
     private static final String MOUNTEBACK_IMPOSTERS_PATH = "/imposters";
-
     private static final String MOUNTEBANK_TEST_PATH = "/test";
-
+    private static final String DEFAULT_MOUNTEBANK_HOST = "localhost";
     private static final int MOUNTEBACK_PORT = 2525;
 
     private CloseableHttpClient mountebackHttpClient;
@@ -39,9 +37,11 @@ public class MountebankHandler {
     private String mountebankHost = null;
 
     public MountebankHandler(String mountebankHost) {
-        this.mountebankHost = mountebankHost;
-        mountebackHttpClient = HttpClients.createDefault();
-        mapper = new ObjectMapper();
+        createMountebackHandler(mountebankHost);
+    }
+
+    public MountebankHandler() {
+        createMountebackHandler(DEFAULT_MOUNTEBANK_HOST);
     }
 
     public void deleteImposter(int port) throws Exception {
@@ -124,6 +124,12 @@ public class MountebankHandler {
         if (mountebackHttpClient != null) {
             mountebackHttpClient.close();
         }
+    }
+
+    private void createMountebackHandler(String mountebankHost) {
+        this.mountebankHost = mountebankHost;
+        mountebackHttpClient = HttpClients.createDefault();
+        mapper = new ObjectMapper();
     }
 
 }

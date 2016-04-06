@@ -1,0 +1,15 @@
+{
+  "port": 4545,
+  "protocol": "http",
+  "stubs": [
+    {
+      "responses": [
+        {
+          "is": {
+            "statusCode": 400
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,5 +1,11 @@
 
-# Mountebank  Playground 
+#Mountebank  Playground 
+
+##Install and Run
+npm install -g mountebank
+
+mb
+
 
 ###Reference:
 http://www.mbtest.org/
